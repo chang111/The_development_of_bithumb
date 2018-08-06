@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<meta charset="utf-8" />
+<head>
+  <script type="text/javascript" src="jquery.js"></script>
+	<script type="text/javascript">
+    $(function(){
+      setInterval(ProcessBithumb,2000);
+      function ProcessBithumb(){
+        $.getJSON("http://test.com/investment/bithumbRequest.php?name=btc", function(json){
+      $('#KRWbithumbBTC').text(Math.round(json.data.closing_price));
+    });
+
+    $.getJSON("http://test.com/investment/bithumbRequest.php?name=bch", function(json){
+      $('#KRWbithumbBCC').text(Math.round(json.data.closing_price));
+    });
+
+    $.getJSON("http://test.com/investment/bithumbRequest.php?name=ltc", function(json){
+      $('#KRWbithumbLTC').text(Math.round(json.data.closing_price));
+    });
+    $.getJSON("http://test.com/investment/bithumbRequest.php?name=eth", function(json){
+      $('#KRWbithumbETH').text(Math.round(json.data.closing_price));
+    });
+    $.getJSON("http://test.com/investment/bithumbRequest.php?name=etc", function(json){
+      $('#KRWbithumbETC').text(Math.round(json.data.closing_price));
+        });
+    $('#transferbithumbBTC').text((parseFloat($('#KRWbithumbBTC').text())/parseFloat($('#CNYbithumbBTC').text())).toFixed(3));
+    $('#transferbithumbBCC').text((parseFloat($('#KRWbithumbBCC').text())/parseFloat($('#CNYbithumbBCC').text())).toFixed(3));
+    $('#transferbithumbLTC').text((parseFloat($('#KRWbithumbLTC').text())/parseFloat($('#CNYbithumbLTC').text())).toFixed(3));
+    $('#transferbithumbETH').text((parseFloat($('#KRWbithumbETH').text())/parseFloat($('#CNYbithumbETH').text())).toFixed(3));
+    $('#transferbithumbETC').text((parseFloat($('#KRWbithumbETC').text())/parseFloat($('#CNYbithumbETC').text())).toFixed(3));
+      }
+    })
+    function search() {
+      var a=document.getElementById("input").value;
+      $('#CNYbithumbBTC').text(a);
+      $('#CNYbithumbBCC').text(a);
+      $('#CNYbithumbLTC').text(a);
+      $('#CNYbithumbETH').text(a);
+      $('#CNYbithumbETC').text(a);
+    }
+</script>
+</head>
+<style>
+    body{
+        line-height: 20px;
+        background:url(./background.jpeg);
+        background-size:100% 100%;
+    }
+
+    #input{
+        font-size: 40px;
+        padding: 10px;
+        line-height: normal;
+        position:center;
+    }
+    #search{
+        font-size: 40px;
+        padding: 10px;
+        line-height: normal;
+        position:center;
+    }
+    #output{
+        font-size: 40px;
+        padding: 10px;
+        line-height: normal;
+    }
+    div.table-title {
+  display: block;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+}
+
+.table-title h3 {
+   color: #fafafa;
+   font-size: 30px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+.table-title p {
+   color: #ffffff;
+   font-size: 10px;
+   font-weight: 400;
+   font-style:normal;
+   font-family: "Roboto", helvetica, arial, sans-serif;
+   text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+   text-transform:uppercase;
+}
+
+/*** Table Styles **/
+
+.table-fill {
+  background: white;
+  border-radius:3px;
+  border-collapse: collapse;
+  height: 40px;
+  margin: auto;
+  max-width: 600px;
+  padding:5px;
+  width: 100%;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  animation: float 5s infinite;
+}
+ 
+th {
+  color:#D5DDE5;
+  background:#1b1e24;
+  border-bottom:4px solid #9ea7af;
+  border-right: 1px solid #343a45;
+  font-size:20px;
+  font-weight: 100;
+  padding:24px;
+  text-align:left;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  vertical-align:middle;
+}
+
+th:first-child {
+  border-top-left-radius:3px;
+}
+ 
+th:last-child {
+  border-top-right-radius:3px;
+  border-right:none;
+}
+  
+tr {
+  border-top: 1px solid #C1C3D1;
+  border-bottom-: 1px solid #C1C3D1;
+  color:#666B85;
+  font-size:16px;
+  font-weight:normal;
+  text-shadow: 0 1px 1px rgba(256, 256, 256, 0.1);
+}
+ 
+tr:hover td {
+  background:#4E5066;
+  color:#FFFFFF;
+  border-top: 1px solid #22262e;
+  border-bottom: 1px solid #22262e;
+}
+ 
+tr:first-child {
+  border-top:none;
+}
+
+tr:last-child {
+  border-bottom:none;
+}
+ 
+tr:nth-child(odd) td {
+  background:#EBEBEB;
+}
+ 
+tr:nth-child(odd):hover td {
+  background:#4E5066;
+}
+
+tr:last-child td:first-child {
+  border-bottom-left-radius:3px;
+}
+ 
+tr:last-child td:last-child {
+  border-bottom-right-radius:3px;
+}
+ 
+td {
+  background:#FFFFFF;
+  padding:20px;
+  text-align:left;
+  vertical-align:middle;
+  font-weight:300;
+  font-size:18px;
+  text-shadow: -1px -1px 1px rgba(0, 0, 0, 0.1);
+  border-right: 1px solid #C1C3D1;
+}
+
+td:last-child {
+  border-right: 0px;
+}
+
+th.text-left {
+  text-align: left;
+}
+
+th.text-center {
+  text-align: center;
+}
+
+th.text-right {
+  text-align: right;
+}
+
+td.text-left {
+  text-align: left;
+}
+
+td.text-center {
+  text-align: center;
+}
+
+td.text-right {
+  text-align: right;
+}
+
+
+</style>
+<body>
+<div align="center">
+    <input type="text" id="input" name="input" placeholder="coinnumber"  />
+    <button id="search" onclick="search()" >Search</button>
+</div>
+<table class="table-fill" style = "position:center" id="">
+        <thead>
+        <tr>
+            <th class="text-left" >Price</th>
+            <th class="text-left" >BTC</th>
+            <th class="text-left" >BCC</th>
+            <th class="text-left" >LTC</th>
+            <th class="text-left" >ETH</th>
+            <th class="text-left" >ETC</th>
+        </tr>
+        </thead>
+        <tbody class="table-hover">
+        <tr>
+            <td class="text-left" >KRW</td>
+            <td class="text-left" id="KRWbithumbBTC"></td>
+            <td class="text-left" id="KRWbithumbBCC"></td>
+            <td class="text-left" id="KRWbithumbLTC"></td>
+            <td class="text-left" id="KRWbithumbETH"></td>
+            <td class="text-left" id="KRWbithumbETC"></td>
+        </tr>
+        </tbody>
+        <tbody class="table-hover">
+        <tr>
+            <td class="text-left" >CNY</td>
+            <td class="text-left" id="CNYbithumbBTC"></td>
+            <td class="text-left" id="CNYbithumbBCC"></td>
+            <td class="text-left" id="CNYbithumbLTC"></td>
+            <td class="text-left" id="CNYbithumbETH"></td>
+            <td class="text-left" id="CNYbithumbETC"></td>
+        </tr>
+        </tbody>
+        <tbody class="table-hover">
+        <tr>
+            <td class="text-left" >tranfer</td>
+            <td class="text-left" id="tranferbithumbBTC"></td>
+            <td class="text-left" id="transferbithumbBCC"></td>
+            <td class="text-left" id="transferbithumbLTC"></td>
+            <td class="text-left" id="transferbithumbETH"></td>
+            <td class="text-left" id="transferbithumbETC"></td>
+        </tr>
+        </tbody>
+</table>
+</body>
+</html>
